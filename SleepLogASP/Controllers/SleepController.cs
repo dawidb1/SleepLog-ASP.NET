@@ -48,7 +48,7 @@ namespace SleepLogASP.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "sleepID,note")] Sleep sleep)
+        public ActionResult Create([Bind(Include = "sleepID,sleepTime,rating,note")] Sleep sleep)
         {
             if (ModelState.IsValid)
             {

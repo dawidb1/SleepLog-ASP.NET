@@ -1,5 +1,5 @@
 # SleepLog-ASP.NET
-This is myy first ASP.NET project
+This is my first ASP.NET project
 
 I am 3rd year student of Biomedical Engineering at Silesian University of Technology. I am interested about day's habbits and sleep quality.
 

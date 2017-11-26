@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SleepLogASP.Models.Sleep>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sleepTime.dayOfWeek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sleepTime.startSleep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.note)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sleepTime.dayOfWeek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sleepTime.startSleep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sleepTime.endSleep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sleepTime.amountOfSleep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating.morningRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating.eveningRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.note)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sleepID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sleepID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sleepID })
+        </td>
+    </tr>
+}
+
+</table>

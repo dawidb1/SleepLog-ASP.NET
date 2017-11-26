@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index Sunday</h2>
+<h2>My Logs:</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h4>
+    @Html.ActionLink("Add sleep manually", "Create")
+</h4>
 <table class="table">
     <tr>
         <th>
@@ -44,7 +44,9 @@
             @Html.DisplayFor(modelItem => item.rating.eveningRating)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.note)
+            <input id="Button1" type="button" value="Read" onclick="func('@item.note')" />
+
+            @* @Html.DisplayFor(modelItem => item.note)*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.sleepID }) |
@@ -54,3 +56,9 @@
     </tr>
 }
 </table>
+<script>
+    function func(tekst)
+    {
+        alert(tekst)
+    }
+</script>

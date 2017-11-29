@@ -7,18 +7,15 @@ namespace SleepLogASP.Models
 {
     public class SleepTime
     {
+        public SleepTime(DateTime startSleep, DateTime endSleep)
+        {
+            this.startSleep = startSleep;
+            this.endSleep = endSleep;
+            this.amountOfSleep = this.endSleep - this.startSleep;
+            this.dayOfWeek = this.startSleep.DayOfWeek;
+        }
         public SleepTime()
         {
-            amountOfSleep = endSleep - startSleep;
-            dayOfWeek = endSleep.DayOfWeek;
-            //if (endSleep.Day == DateTime.Today.Day)
-            //{
-            //    specialDay = "Today";
-            //}
-            //else if(endSleep.Day == DateTime.Today.AddDays(-1).Day)
-            //{
-            //    specialDay = "Yesterday";
-            //}
         }
         public int SleepTimeID { get; set; }
         public DateTime startSleep { get; set; }

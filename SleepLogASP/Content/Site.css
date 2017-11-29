@@ -8,6 +8,29 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+button {
+    background-color: gray; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    /*font-size: auto;*/
+}
+
+.circle {
+    margin: 120px auto;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    font-size: 42px;
+}
+table, th, td {
+    margin: 0 auto;
+} 
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -22,3 +45,4 @@ select,
 textarea {
     max-width: 280px;
 }
+

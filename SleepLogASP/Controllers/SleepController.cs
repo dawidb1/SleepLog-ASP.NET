@@ -106,6 +106,11 @@ namespace SleepLogASP.Controllers
             return View(sleep);
         }
 
+        public ActionResult GoSleep()
+        {
+            return View();
+        }
+
         // POST: Sleep/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -125,5 +130,7 @@ namespace SleepLogASP.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }

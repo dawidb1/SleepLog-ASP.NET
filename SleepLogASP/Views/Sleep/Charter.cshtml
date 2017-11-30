@@ -1,0 +1,83 @@
+﻿<html>
+
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            #chartContainer{
+                width:1200px;
+                height:600px;
+            }
+        </style>
+
+    @{
+        ViewBag.Title = "Charter";
+    }
+   
+</head>
+<body>
+    @model IEnumerable<SleepLogASP.Models.ChartInfo>
+
+    <h2>See your last 7 days:</h2>
+    <div id="chartContainer" style="height: 370px; width: 100%;">
+        <canvas id="bar_chart"></canvas>
+    </div>
+    <script type="text/javascript">
+        @*var date = @Html.Raw(Json.Encode(Model.Select(x=>x.date)));
+        var amountOfTime = @Html.Raw(Json.Encode(Model.Select(x=>x.amountOfTime)));*@
+
+        var date = @Html.Raw(Json.Encode(ViewBag.DATE));
+        var amountOfTime = @Html.Raw(Json.Encode(ViewBag.TIME));
+        alert(amountOfTime[1]);
+        var ctx = $('#bar_chart');
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: date,
+                datasets: [{
+                    label: "Bar chart example",
+                    data: amountOfTime,
+                }]
+            },
+
+            options: {
+
+                maintainAspectRatio: false,
+                scales: { xAxes: [{ ticks: { beginAtZero: true } }] },
+                //scales: {
+                //    xAxes: [{
+                //        type: 'time',
+                //        time: {
+                //            displayFormats: {
+                //                'day': 'MMM DD',
+                //            }
+                //        }
+                //    }]
+                //}
+                legend: { display: false }
+
+                //       scales: {
+                //    xAxes: [{
+                //        type: 'time',
+                //        time: {
+                //            displayFormats: {
+                //                'day': 'MMM DD',
+                //                'week': 'MMM DD',
+                //                'month': 'MMM DD',
+                //                'quarter': 'MMM DD',
+                //                'year': 'MMM DD',
+                //            }
+                //        }
+                //    }]
+                //},
+            },
+
+        });
+    </script>
+
+</body>
+</html>

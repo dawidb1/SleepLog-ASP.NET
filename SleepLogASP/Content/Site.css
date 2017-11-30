@@ -19,6 +19,10 @@ button {
     margin: 0 auto;
     /*font-size: auto;*/
 }
+/*.chart{
+    border-radius:0;
+    color:blue;
+}*/
 
 .circle {
     margin: 120px auto;

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using SleepLogASP.DAL;
 using SleepLogASP.Models;
@@ -41,6 +43,67 @@ namespace SleepLogASP.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult CharterColumn()
+        {
+            ArrayList xValue = new ArrayList();
+            ArrayList yValue = new ArrayList();
+
+            var sleeps = db.Sleeps.Include(st => st.sleepTime);
+
+            var xResults = sleeps.Select(x => x.sleepTime.startSleep).ToList();
+            var yResults = sleeps.Select(x => x.sleepTime.amountOfSleep).ToList();
+
+            List<DateTime> justDate = new List<DateTime>();
+
+            foreach (DateTime item in xResults)
+            {
+                justDate.Add(item.Date);
+            }
+            List<double> doubleAmountOfTime = new List<double>();
+
+            foreach (TimeSpan item in yResults)
+            {
+                doubleAmountOfTime.Add(item.TotalHours);
+            }
+
+            //var yy = int.Parse(yResults);
+            justDate.ForEach(date=>xValue.Add(date));
+            doubleAmountOfTime.ForEach(amount => yValue.Add(amount));
+
+            new Chart(width: 1200, height: 600, theme: ChartTheme.Green)
+                .AddTitle("Ile spałeś?")
+                .AddSeries("Default", chartType: "Column", xValue: xValue, yValues: yValue)
+                .Write("bmp");
+
+            return null;
+        }
+        public ActionResult Charter()
+        {
+            var sleeps = db.Sleeps.Include(st => st.sleepTime);
+            List<ChartInfo> chartList = new List<ChartInfo>();
+
+            var dateList = sleeps.Select(x => x.sleepTime.startSleep).ToList();
+            var amountOfTimeList = sleeps.Select(x => x.sleepTime.amountOfSleep).ToList();
+
+            //foreach (DateTime item in dateList)
+            //{
+            //    chartList
+            //}
+            //List<double> doubleAmountOfTime = new List<double>();
+
+            //foreach (TimeSpan item in amountOfTimeList)
+            //{
+            //    doubleAmountOfTime.Add(item.TotalHours);
+            //}
+            for (int i = 0; i < dateList.Count; i++)
+            {
+                chartList.Add(new ChartInfo(dateList[i].Date, amountOfTimeList[i].TotalHours));
+            }
+            ViewBag.DATE = dateList.Select(x => x.Date);
+            ViewBag.TIME = amountOfTimeList.Select(x => x.TotalHours);
+            return View(chartList);
         }
 
         // POST: Sleep/Create
@@ -131,6 +194,7 @@ namespace SleepLogASP.Controllers
             base.Dispose(disposing);
         }
 
-        
+
+
     }
 }

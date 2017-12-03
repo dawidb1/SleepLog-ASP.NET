@@ -18,7 +18,7 @@ namespace SleepLogASP.Controllers
         // GET: Sleep
         public ActionResult Index()
         {
-            var sleeps = db.Sleeps.Include(r => r.rating).Include(st => st.sleepTime);
+            var sleeps = db.Sleeps.Include(r => r.Rating).Include(st => st.SleepTime);
             return View(sleeps);
         }
 
@@ -41,6 +41,16 @@ namespace SleepLogASP.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+        public ActionResult Stats()
+        {
+            var sleeps = db.Sleeps.Include(st => st.SleepTime);
+            List<ChartInfo> chartList = new List<ChartInfo>();
+            foreach (var item in db.SleepTimes)
+            {
+                chartList.Add(new ChartInfo(item.AmountOfSleep.TotalHours, item.StartSleep.Date));
+            }
+            return View(chartList);
         }
 
         // POST: Sleep/Create

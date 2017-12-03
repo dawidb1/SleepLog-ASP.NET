@@ -163,7 +163,12 @@
     <Compile Include="Migrations\201711292004274_NewPersonalizedData.Designer.cs">
       <DependentUpon>201711292004274_NewPersonalizedData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031543191_AddedFirstName.cs" />
+    <Compile Include="Migrations\201712031543191_AddedFirstName.Designer.cs">
+      <DependentUpon>201712031543191_AddedFirstName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ChartInfo.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Sleep.cs" />
     <Compile Include="Models\SleepTime.cs" />
@@ -182,6 +187,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\Date.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -190,6 +198,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -212,6 +224,7 @@
     <Content Include="Views\Sleep\Edit.cshtml" />
     <Content Include="Views\Sleep\Index.cshtml" />
     <Content Include="Views\Sleep\GoSleep.cshtml" />
+    <Content Include="Views\Sleep\Stats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -235,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711292004274_NewPersonalizedData.resx">
       <DependentUpon>201711292004274_NewPersonalizedData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031543191_AddedFirstName.resx">
+      <DependentUpon>201712031543191_AddedFirstName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -107,3 +107,4 @@ D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\obj\Debug
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\obj\Debug\SleepLogASP.Migrations.InitialCreate.resources
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\obj\Debug\SleepLogASP.csproj.GenerateResource.Cache
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\obj\Debug\SleepLogASP.Migrations.NewPersonalizedData.resources
+D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\obj\Debug\SleepLogASP.Migrations.AddedFirstName.resources

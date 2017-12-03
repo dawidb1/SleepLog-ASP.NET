@@ -12,25 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.sleepTime.dayOfWeek)
+            @Html.DisplayNameFor(model => model.SleepTime.DayOfWeek)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sleepTime.startSleep)
+            @Html.DisplayNameFor(model => model.SleepTime.StartSleep)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sleepTime.endSleep)
+            @Html.DisplayNameFor(model => model.SleepTime.EndSleep)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.sleepTime.amountOfSleep)
+            @Html.DisplayNameFor(model => model.SleepTime.AmountOfSleep)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rating.morningRating)
+            @Html.DisplayNameFor(model => model.Rating.MorningRating)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rating.eveningRating)
+            @Html.DisplayNameFor(model => model.Rating.EveningRating)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.note)
+            @Html.DisplayNameFor(model => model.Note)
         </th>
         <th>properties</th>
     </tr>
@@ -38,32 +38,32 @@
 @foreach (var item in Model.Reverse()) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.sleepTime.dayOfWeek)
+            @Html.DisplayFor(modelItem => item.SleepTime.DayOfWeek)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.sleepTime.startSleep)
+            @Html.DisplayFor(modelItem => item.SleepTime.StartSleep)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.sleepTime.endSleep)
+            @Html.DisplayFor(modelItem => item.SleepTime.EndSleep)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.sleepTime.amountOfSleep)
+            @Html.DisplayFor(modelItem => item.SleepTime.AmountOfSleep)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.rating.morningRating)
+            @Html.DisplayFor(modelItem => item.Rating.MorningRating)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.rating.eveningRating)
+            @Html.DisplayFor(modelItem => item.Rating.EveningRating)
         </td>
         <td>
-            <button id="Button1" type="button" onclick="func('@item.note')">Read</button>
+            <button id="Button1" type="button" onclick="func('@item.Note')">Read</button>
 
             @* @Html.DisplayFor(modelItem => item.note)*@
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.sleepID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.sleepID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.sleepID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.SleepID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SleepID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SleepID })
         </td>
     </tr>
 }

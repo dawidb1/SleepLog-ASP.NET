@@ -1,0 +1,46 @@
+﻿<script src="~/Scripts/Chart.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/Date.min.js"></script>
+
+@{
+    ViewBag.Title = "Stats";
+}
+
+@model IEnumerable<SleepLogASP.Models.ChartInfo>
+
+<h2>See your last 7 days:</h2>
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script type="text/javascript">
+        var date = @Html.Raw(Json.Encode(Model.Select(x=>x.DateJS)));
+        var amountOfTime = @Html.Raw(Json.Encode(Model.Select(x=>x.amountOfHours)));
+
+        var dateList = [];
+        for (var i = 0; i < date.length; i++) {
+            var dateTemp = new Date(date[i]);
+            var stringTemp = (dateTemp.getDate() + '.' + (dateTemp.getMonth()+1));
+            dateList.push(stringTemp);
+        }
+
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dateList,
+                datasets: [{
+                    label: 'Hours of sleep',
+                    data: amountOfTime,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 2
+                        }
+                    }]
+                }
+            }
+        });
+</script>

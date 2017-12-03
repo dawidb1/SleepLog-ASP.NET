@@ -8,7 +8,7 @@ namespace SleepLogASP.Models
     public class Rating
     {
         public int RatingID { get; set; }
-        public int morningRating { get; set; }
-        public int eveningRating { get; set; }
+        public int MorningRating { get; set; }
+        public int EveningRating { get; set; }
     }
 }

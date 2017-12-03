@@ -9,19 +9,19 @@ namespace SleepLogASP.Models
     {
         public SleepTime(DateTime startSleep, DateTime endSleep)
         {
-            this.startSleep = startSleep;
-            this.endSleep = endSleep;
-            this.amountOfSleep = this.endSleep - this.startSleep;
-            this.dayOfWeek = this.startSleep.DayOfWeek;
+            this.StartSleep = startSleep;
+            this.EndSleep = endSleep;
+            this.AmountOfSleep = this.EndSleep - this.StartSleep;
+            this.DayOfWeek = this.StartSleep.DayOfWeek;
         }
         public SleepTime()
         {
         }
         public int SleepTimeID { get; set; }
-        public DateTime startSleep { get; set; }
-        public DateTime endSleep { get; set; }
-        public TimeSpan amountOfSleep { get; set; }
-        public DayOfWeek dayOfWeek { get; set; }
+        public DateTime StartSleep { get; set; }
+        public DateTime EndSleep { get; set; }
+        public TimeSpan AmountOfSleep { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
         //public string specialDay { get; set; }
     }
 }

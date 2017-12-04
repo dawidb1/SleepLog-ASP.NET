@@ -52,7 +52,6 @@ C:\Users\dawid\source\repos\SleepLogASP\SleepLogASP\obj\Debug\SleepLogASP.csproj
 C:\Users\dawid\source\repos\SleepLogASP\SleepLogASP\obj\Debug\SleepLogASP.dll
 C:\Users\dawid\source\repos\SleepLogASP\SleepLogASP\obj\Debug\SleepLogASP.pdb
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\bin\ApplicationInsights.config
-D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\bin\SleepLogASP.dll.config
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\bin\SleepLogASP.dll
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\bin\SleepLogASP.pdb
 D:\Users\Dawid Barański\Documents\GitHub\SleepLog-ASP.NET\SleepLogASP\bin\Antlr3.Runtime.dll

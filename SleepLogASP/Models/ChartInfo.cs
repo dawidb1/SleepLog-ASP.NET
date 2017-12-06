@@ -9,10 +9,10 @@ namespace SleepLogASP.Models
     {
         public ChartInfo(double amountOfHours, DateTime date)
         {
-            this.amountOfHours = amountOfHours;
+            this.AmountOfHours = amountOfHours;
             this.DateJS = (long)date.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
         }
-        public double amountOfHours { get; set; }
+        public double AmountOfHours { get; set; }
         public long DateJS { get; set; }
     }
 }

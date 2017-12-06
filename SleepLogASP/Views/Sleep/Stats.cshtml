@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
         var date = @Html.Raw(Json.Encode(Model.Select(x=>x.DateJS)));
-        var amountOfTime = @Html.Raw(Json.Encode(Model.Select(x=>x.amountOfHours)));
+        var amountOfTime = @Html.Raw(Json.Encode(Model.Select(x=>x.AmountOfHours)));
 
         var dateList = [];
         for (var i = 0; i < date.length; i++) {

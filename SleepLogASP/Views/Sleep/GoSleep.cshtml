@@ -3,6 +3,86 @@
     ViewBag.Title = "GoSleep";
 }
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/jquery.flip.js"></script>
 
-<h2>GoSleep</h2>
-<button class="circle" type="button">Go to sleep</button>
+@*<h2>GoSleep</h2>
+<button class="circle" type="button">Go to sleep</button>*@
+
+<div id="card"> 
+    <div id="startTime" class="front circle"> 
+        <p id="saved-time" class="circle-text">Go to sleep</p>
+    </div> 
+    <div id="stopTime" class="back circle">
+        <p id="time" class="circle-text"></p>
+    </div> 
+</div>
+
+<script>
+    $("#card").flip();
+
+    var h, m, s, cs, ms, countStarted, czas;
+    resetTime();
+    countStarted = false;
+
+    function resetTime() {
+        czas = 0;
+        h = 0;
+        m = 0;
+        s = 0;
+        cs = 0;
+    }
+
+    function visibility()
+    {
+        document.getElementById('card').style.visibility = "visible";
+    }
+
+    function count()
+    {
+        cs++;
+	
+        if(cs === 100)
+        {
+            cs = 0;
+            s++;
+		
+            if(s === 60)
+            {
+                s = 0;
+                m++;
+			
+                if(m === 60)
+                {
+                    m = 0;
+                    h++;
+                }
+            }
+        }
+        refresh();
+    }
+
+    function refresh() {
+
+        czas = h + "h:" + m + "m:" + s +"s";
+        var wyswietl = czas + "<br/> Stop";
+        document.getElementById("time").innerHTML = wyswietl;
+        //$("stopTime").innerHTML("Hello world!");
+    }
+
+    function startCount() {
+        if (countStarted === false) {
+            countStarted = true;
+            visibility();
+            setInterval(count, 10);
+        }
+        resetTime();
+    }
+    function stopCount() {
+        document.getElementById("saved-time").innerHTML ="You slept:<br/> " + czas;
+        //resetTime();
+    }
+
+    document.getElementById('startTime').onclick = startCount;
+    document.getElementById('stopTime').onclick = stopCount;
+</script>

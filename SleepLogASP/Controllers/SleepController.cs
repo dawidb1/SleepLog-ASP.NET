@@ -18,6 +18,7 @@ namespace SleepLogASP.Controllers
         // GET: Sleep
         public ActionResult Index()
         {
+
             var sleeps = db.Sleeps.Include(r => r.rating).Include(st => st.sleepTime);
             return View(sleeps);
         }

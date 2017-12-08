@@ -50,7 +50,7 @@ namespace SleepLogASP.Controllers
         {
             var sleeps = db.Sleeps.Include(st => st.SleepTime);
             List<ChartInfo> chartList = new List<ChartInfo>();
-            foreach (var item in db.SleepTimes)
+            foreach (var item in db.Sleeps.Select(x=>x.SleepTime))
             {
                 chartList.Add(new ChartInfo(item.AmountOfSleep.TotalHours, item.StartSleep.Date));
             }

@@ -1,13 +1,13 @@
-﻿
+﻿@model SleepLogASP.Models.Sleep
+
 @{
     ViewBag.Title = "GoSleep";
 }
+
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/jquery.flip.js"></script>
 
-@*<h2>GoSleep</h2>
-<button class="circle" type="button">Go to sleep</button>*@
 
 <div id="card"> 
     <div id="startTime" class="front circle"> 
@@ -17,6 +17,15 @@
         <p id="time" class="circle-text"></p>
     </div> 
 </div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.SleepTime.StartSleep, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.SleepTime.StartSleep, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.SleepTime.StartSleep, "", new { @class = "text-danger" })*@
+    </div>
+</div>
+
 
 <script>
     $("#card").flip();

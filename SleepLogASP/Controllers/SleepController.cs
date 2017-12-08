@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -29,11 +30,13 @@ namespace SleepLogASP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sleep sleep = db.Sleeps.Find(id);
+            var sleeps = db.Sleeps.Include(st => st.SleepTime);
+            Sleep sleep = sleeps.Where(x => x.SleepID == id).First();
             if (sleep == null)
             {
                 return HttpNotFound();
             }
+            
             return View(sleep);
         }
         
@@ -42,6 +45,7 @@ namespace SleepLogASP.Controllers
         {
             return View();
         }
+
         public ActionResult Stats()
         {
             var sleeps = db.Sleeps.Include(st => st.SleepTime);
@@ -58,16 +62,26 @@ namespace SleepLogASP.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "sleepID,sleepTime,rating,note")] Sleep sleep)
+        //public ActionResult Create([Bind(Include = "sleepID,sleepTime,rating,note")] Sleep sleep)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Sleeps.Add(sleep);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(sleep);
+        //}
+        public ActionResult Create([Bind(Include = "SleepTime,Note")] Sleep sleep)
         {
-            if (ModelState.IsValid)
+            using (db)
             {
-                db.Sleeps.Add(sleep);
+                db.Sleeps.Add(new Sleep(sleep.SleepTime,sleep.Note));
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(sleep);
+            //return View(sleep);
         }
 
         // GET: Sleep/Edit/5
@@ -77,7 +91,9 @@ namespace SleepLogASP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sleep sleep = db.Sleeps.Find(id);
+            var sleeps = db.Sleeps.Include(st => st.SleepTime);
+            Sleep sleep = sleeps.Where(x => x.SleepID == id).First();
+
             if (sleep == null)
             {
                 return HttpNotFound();
@@ -88,16 +104,60 @@ namespace SleepLogASP.Controllers
         // POST: Sleep/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost,ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var sleepToUpdate = db.Sleeps.Find(id);
+
+            //var newSleep = new Sleep(new SleepTime("SleepTime"), );
+
+            if (TryUpdateModel(sleepToUpdate, "",
+                new string[] { "Note", "SleepTime" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DataException)
+                {
+                    ModelState.AddModelError("", "blabla");
+                }
+            }
+            //if (TryUpdateModel(sleepTimeToUpdate, "",
+            //    new string[] { "StartSleep", "EndSleep" }))
+            //{
+            //    try
+            //    {
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    catch (DataException)
+            //    {
+            //        ModelState.AddModelError("", "blabla");
+            //    }
+            //}
+            return View(sleepToUpdate);
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(sleep).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(sleep);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "sleepID,note")] Sleep sleep)
+        public ActionResult GoSleep([Bind(Include = "sleepID,sleepTime")] Sleep sleep)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sleep).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            db.Entry(sleep).State = EntityState.Added;
+            db.SaveChanges();
             return View(sleep);
         }
 

@@ -31,5 +31,11 @@ namespace SleepLogASP.Models
         public TimeSpan AmountOfSleep { get; set; }
         public DayOfWeek DayOfWeek { get; set; }
         //public string specialDay { get; set; }
+
+        public void SetOtherData()
+        {
+            this.AmountOfSleep = this.EndSleep - this.StartSleep;
+            this.DayOfWeek = this.StartSleep.DayOfWeek;
+        }
     }
 }

@@ -121,6 +121,7 @@ namespace SleepLogASP.Controllers
             {
                 try
                 {
+                    sleepToUpdate.SleepTime.SetOtherData();
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

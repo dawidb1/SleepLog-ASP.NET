@@ -8,6 +8,50 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+button {
+    background-color: gray; /* Green*/ 
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    align-content: center;
+
+    /*font-size: auto;*/
+}
+#card {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    margin: 100px auto;
+    /*position: relative;*/
+}
+/*#time {
+    line-height: 100px;
+    color: black;
+}*/
+.circle {
+    border-radius: 50%;
+    font-size: 42px;
+    background-color: gray; /* Green */
+    border: none;
+    color: white;
+
+}
+.circle-text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    /*line-height: 50px;*/
+    /*height: 100px;*/
+}
+
+table, th, td {
+    margin: 0 auto;
+} 
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -22,3 +66,4 @@ select,
 textarea {
     max-width: 280px;
 }
+

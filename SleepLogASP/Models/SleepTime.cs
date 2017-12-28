@@ -9,22 +9,33 @@ namespace SleepLogASP.Models
     {
         public SleepTime()
         {
-            amountOfSleep = endSleep - startSleep;
-            dayOfWeek = endSleep.DayOfWeek;
-            //if (endSleep.Day == DateTime.Today.Day)
-            //{
-            //    specialDay = "Today";
-            //}
-            //else if(endSleep.Day == DateTime.Today.AddDays(-1).Day)
-            //{
-            //    specialDay = "Yesterday";
-            //}
+                
+        }
+        public SleepTime(DateTime startSleep, DateTime endSleep)
+        {
+            this.StartSleep = startSleep;
+            this.EndSleep = endSleep;
+            this.AmountOfSleep = this.EndSleep - this.StartSleep;
+            this.DayOfWeek = this.StartSleep.DayOfWeek;
+        }
+        public SleepTime(SleepTime sleepTime)
+        {
+            this.StartSleep = sleepTime.StartSleep;
+            this.EndSleep = sleepTime.EndSleep;
+            this.AmountOfSleep = this.EndSleep - this.StartSleep;
+            this.DayOfWeek = this.StartSleep.DayOfWeek;
         }
         public int SleepTimeID { get; set; }
-        public DateTime startSleep { get; set; }
-        public DateTime endSleep { get; set; }
-        public TimeSpan amountOfSleep { get; set; }
-        public DayOfWeek dayOfWeek { get; set; }
+        public DateTime StartSleep { get; set; }
+        public DateTime EndSleep { get; set; }
+        public TimeSpan AmountOfSleep { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
         //public string specialDay { get; set; }
+
+        public void SetOtherData()
+        {
+            this.AmountOfSleep = this.EndSleep - this.StartSleep;
+            this.DayOfWeek = this.StartSleep.DayOfWeek;
+        }
     }
 }

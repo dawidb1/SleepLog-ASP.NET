@@ -7,9 +7,18 @@ namespace SleepLogASP.Models
 {
     public class Sleep
     {
-        public int sleepID { get; set; }
-        public SleepTime sleepTime { get; set; }
-        public Rating rating { get; set; }
-        public string note { get; set; }
+        public Sleep()
+        {
+                
+        }
+        public Sleep(SleepTime sleepTime,string note)
+        {
+            this.SleepTime = new SleepTime(sleepTime);
+            this.Note = note;
+        }
+        public int SleepID { get; set; }
+        public SleepTime SleepTime { get; set; }
+        public Rating Rating { get; set; }
+        public string Note { get; set; }
     }
 }

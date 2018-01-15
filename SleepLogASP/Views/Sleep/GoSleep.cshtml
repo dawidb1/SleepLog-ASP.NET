@@ -4,19 +4,21 @@
     ViewBag.Title = "GoSleep";
 }
 
-<link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/jquery.flip.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
-
-<div id="card"> 
-    <div id="startTime" class="front circle"> 
+<a href="@Url.Action("GetTime","Sleep")" id="postMePls">
+<div id="card">
+    <div id="startTime" class="front circle">
         <p id="saved-time" class="circle-text">Go to sleep</p>
-    </div> 
+    </div>
     <div id="stopTime" class="back circle">
         <p id="time" class="circle-text"></p>
-    </div> 
+    </div>
 </div>
+</a>
 
 <div class="form-group">
     @Html.LabelFor(model => model.SleepTime.StartSleep, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -42,27 +44,22 @@
         cs = 0;
     }
 
-    function visibility()
-    {
+    function visibility() {
         document.getElementById('card').style.visibility = "visible";
     }
 
-    function count()
-    {
+    function count() {
         cs++;
-	
-        if(cs === 100)
-        {
+
+        if (cs === 100) {
             cs = 0;
             s++;
-		
-            if(s === 60)
-            {
+
+            if (s === 60) {
                 s = 0;
                 m++;
-			
-                if(m === 60)
-                {
+
+                if (m === 60) {
                     m = 0;
                     h++;
                 }
@@ -73,7 +70,7 @@
 
     function refresh() {
 
-        czas = h + "h:" + m + "m:" + s +"s";
+        czas = h + "h:" + m + "m:" + s + "s";
         var wyswietl = czas + "<br/> Stop";
         document.getElementById("time").innerHTML = wyswietl;
         //$("stopTime").innerHTML("Hello world!");
@@ -88,10 +85,24 @@
         resetTime();
     }
     function stopCount() {
-        document.getElementById("saved-time").innerHTML ="You slept:<br/> " + czas;
+        document.getElementById("saved-time").innerHTML = "You slept:<br/> " + czas;
         //resetTime();
     }
 
     document.getElementById('startTime').onclick = startCount;
     document.getElementById('stopTime').onclick = stopCount;
+
+    $("#postMePls").click(function (e) {
+
+        e.preventDefault();
+        $.ajax({
+
+            url: $(this).attr("href"), // comma here instead of semicolon
+            success: function () {
+                alert("Value Added");  // or any other indication if you want to show
+            }
+
+        });
+
+    });
 </script>

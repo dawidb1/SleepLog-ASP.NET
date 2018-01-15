@@ -153,13 +153,53 @@ namespace SleepLogASP.Controllers
             //return View(sleep);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult GoSleep([Bind(Include = "sleepID,sleepTime")] Sleep sleep)
+        public ActionResult GoSleep()
         {
-            db.Entry(sleep).State = EntityState.Added;
-            db.SaveChanges();
-            return View(sleep);
+            return View();
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult GoSleep(int inttttt)
+        //{
+        //    SleepTime sleeptime = new SleepTime();
+        //    if (sleeptime.StartSleep != null)
+        //    {
+        //        sleeptime.EndSleep = DateTime.Now;
+        //    }
+        //    else sleeptime.StartSleep = DateTime.Now;
+
+        //    //db.Entry(sleep).State = EntityState.Added;
+        //    //db.SaveChanges();
+        //    return View();
+        //}
+
+        public void GetTime()
+        {
+            SleepTime sleeptime = new SleepTime();
+            if (sleeptime.StartSleep == sleeptime.EndSleep)
+            {
+                sleeptime.EndSleep = DateTime.Now;
+            }
+            else sleeptime.StartSleep = DateTime.Now;
+        }
+        public void GetStartTime()
+        {
+            SleepTime sleeptime = new SleepTime();
+            if (sleeptime.StartSleep == sleeptime.EndSleep)
+            {
+                sleeptime.EndSleep = DateTime.Now;
+            }
+            else sleeptime.StartSleep = DateTime.Now;
+        }
+        public void GetEndTime()
+        {
+            SleepTime sleeptime = new SleepTime();
+            if (sleeptime.StartSleep == sleeptime.EndSleep)
+            {
+                sleeptime.EndSleep = DateTime.Now;
+            }
+            else sleeptime.StartSleep = DateTime.Now;
         }
 
         // GET: Sleep/Delete/5
@@ -177,10 +217,7 @@ namespace SleepLogASP.Controllers
             return View(sleep);
         }
 
-        public ActionResult GoSleep()
-        {
-            return View();
-        }
+
 
         // POST: Sleep/Delete/5
         [HttpPost, ActionName("Delete")]
